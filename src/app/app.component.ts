@@ -22,5 +22,13 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+
+    const cordova = (<any>window).cordova;
+
+    if(cordova && cordova.plugins.notification.local) {
+      cordova.plugins.notification.local.on('click', (notification) => {
+        console.log(notification.data);
+      });
+    }
   }
 }
