@@ -1,0 +1,7 @@
+{
+  "name": "dailydo",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
