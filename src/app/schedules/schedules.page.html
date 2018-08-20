@@ -18,7 +18,16 @@
 
   <ion-list>
     <ion-item *ngFor="let schedule of scheduler.schedules">
-      {{ schedule.name }} {{ schedule.hour }}
+
+      {{ schedule | json}}
+      <ion-label>
+        <ion-text>
+          <h3>{{ schedule.name }}</h3>
+        </ion-text>
+        <ion-text>
+          <p>Every {{ schedule.recurrence }} at {{ schedule.time | date:'h:mma' }}</p>
+        </ion-text>
+      </ion-label>
     </ion-item>
   </ion-list>
 

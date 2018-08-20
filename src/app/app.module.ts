@@ -11,12 +11,20 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SchedulerService } from './scheduler.service';
-import { ScheduleModalComponent } from './schedule-modal/schedule-modal.component';
+import { ScheduleModalComponent } from './schedules/schedule-modal/schedule-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, ScheduleModalComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), IonicStorageModule.forRoot(), AppRoutingModule],
+  entryComponents: [ScheduleModalComponent],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    IonicStorageModule.forRoot(), 
+    FormsModule, 
+    ReactiveFormsModule, 
+    AppRoutingModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>New Schedule</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button fill="solid" color="warning" (click)="modalCtrl.dismiss()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form margin-top [formGroup]="scheduleForm" (ngSubmit)="save()">
+    <ion-list>
+      <ion-item>
+        <ion-label>Name</ion-label>
+        <ion-input formControlName="name" maxlength="20" placeholder="Enter Schedule Name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Recurrence</ion-label>
+        <ion-select formControlName="recurrence" value="day" placeholder="Select Recurrence">
+          <ion-select-option value="day">Daily</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Time</ion-label>  
+        <ion-datetime formControlName="time" 
+                      minuteValues="0,15,30,45"
+                      placeholder="Choose Time"
+                      displayFormat="h:mm a"
+                      pickerFormat="h mm a"></ion-datetime>
+      </ion-item>
+
+      <ion-button margin-top padding-horizontal ion-item expand="block" color="primary" type="submit" [disabled]="!scheduleForm.valid">Save Schedule</ion-button>
+
+    </ion-list>
+  </form>
+</ion-content>

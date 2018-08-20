@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { ModalController } from '@ionic/angular';
 
 import { SchedulerService } from '../scheduler.service';
-import { ScheduleModalComponent } from '../schedule-modal/schedule-modal.component';
+import { ScheduleModalComponent } from './schedule-modal/schedule-modal.component';
 
 @Component({
   selector: 'app-schedules',
@@ -14,7 +13,6 @@ export class SchedulesPage implements OnInit {
 
   constructor(
     public scheduler: SchedulerService,
-    private localNotifications: LocalNotifications,
     private modalController: ModalController
   ) { }
 
@@ -30,7 +28,10 @@ export class SchedulesPage implements OnInit {
 
     const res = await modal.onDidDismiss();
 
-    console.log('res', res);
+    if(!res || !res.data) return;
+    const { name, recurrence, time } = res.data;
+
+    this.scheduler.addSchedule({ name, recurrence, time });
   }
 
 }

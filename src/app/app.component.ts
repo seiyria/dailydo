@@ -25,7 +25,7 @@ export class AppComponent {
 
     const cordova = (<any>window).cordova;
 
-    if(cordova && cordova.plugins.notification.local) {
+    if(cordova && cordova.plugins.notification) {
       cordova.plugins.notification.local.on('click', (notification) => {
         console.log(notification.data);
       });
